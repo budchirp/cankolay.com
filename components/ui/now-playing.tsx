@@ -9,7 +9,16 @@ import { Fetch } from '@/lib/fetch'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Section, Box, BoxContent, Center, Column, Text, Row } from '@trash-ui/components'
+import {
+  Section,
+  Box,
+  BoxContent,
+  Center,
+  Column,
+  Text,
+  Row,
+  RawColumn
+} from '@trash-ui/components'
 
 import type { Song } from '@/types/song'
 
@@ -57,7 +66,7 @@ export const NowPlaying: React.FC<NowPlayingProps> = ({ api = 'me' }) => {
             )}
           </div>
 
-          <Column padding='none' className='xs:flex-row z-10 w-full gap-2'>
+          <Column padding='none' className='xs:flex-row z-10 w-full items-center gap-2'>
             <Center className='border border-outline aspect-square overflow-hidden shrink-0 rounded-2xl size-full xs:size-20'>
               {song?.image ? (
                 <Image
@@ -72,18 +81,20 @@ export const NowPlaying: React.FC<NowPlayingProps> = ({ api = 'me' }) => {
               )}
             </Center>
 
-            <Column padding='none' className='gap-1.5 w-full p-2 xs:pe-2 xs:ps-0 xs:justify-center'>
-              <Link href={song?.link || ''} target='_blank' className='flex items-center gap-1.5'>
-                <Disc3 className={song?.isPlaying ? 'animate-spin-slow' : ''} size={16} />
+            <Column padding='none' className='gap-4 w-full p-2 xs:pe-2 xs:ps-0 xs:justify-center'>
+              <Column padding='none' className='gap-1'>
+                <Link href={song?.link || ''} target='_blank' className='flex items-center gap-1.5'>
+                  <Disc3 className={song?.isPlaying ? 'animate-spin-slow' : ''} size={16} />
 
-                <Text className='text-lg flex-1 font-bold leading-none'>
-                  {song?.title || 'Playing nothing'}
+                  <Text className='text-lg flex-1 font-bold leading-none'>
+                    {song?.title || 'Playing nothing'}
+                  </Text>
+                </Link>
+
+                <Text className='font-medium leading-none text-tertiary'>
+                  {song?.artist || '*****'}
                 </Text>
-              </Link>
-
-              <Text className='font-medium leading-none text-tertiary'>
-                {song?.artist || '*****'}
-              </Text>
+              </Column>
 
               <Row className='gap-2'>
                 <Text className='text-sm w-10 text-start leading-none text-secondary'>

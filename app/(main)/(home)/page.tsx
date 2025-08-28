@@ -27,12 +27,12 @@ type SkillChipProps = {
 const SkillChip: React.FC<SkillChipProps> = ({ icon, name }: SkillChipProps): React.ReactNode => {
   return (
     <Box className='rounded-full'>
-      <BoxContent>
-        <Row className='gap-3'>
+      <BoxContent padding='sm'>
+        <Row className='gap-3 h-full pe-2'>
           <Center className='size-10 rounded-full aspect-square bg-surface-primary-accent border border-outline-accent p-1 text-gray-50'>
             {icon}
           </Center>
-          <Text className='font-medium w-full grow pe-2'>{name}</Text>
+          <Text className='font-medium w-full'>{name}</Text>
         </Row>
       </BoxContent>
     </Box>
@@ -42,7 +42,7 @@ const SkillChip: React.FC<SkillChipProps> = ({ icon, name }: SkillChipProps): Re
 const Page: React.FC = (): React.ReactNode => {
   return (
     <Container>
-      <Column padding='none'>
+      <Column className='gap-8' padding='none'>
         <Section
           divider={false}
           title={
@@ -53,7 +53,7 @@ const Page: React.FC = (): React.ReactNode => {
           description={data.about}
         />
 
-        <Section className='mt-0' divider={false} title={<Heading size='h2'>Technologies</Heading>}>
+        <Section className='mt-0' title={<Heading size='h2'>Technologies</Heading>}>
           <Column padding='none'>
             {(Object.keys(data.technologies) as Array<keyof typeof data.technologies>).map(
               (key, index) => (
@@ -69,7 +69,7 @@ const Page: React.FC = (): React.ReactNode => {
           </Column>
         </Section>
 
-        <Section className='mt-0' divider={false} title={<Heading size='h2'>Stacks</Heading>}>
+        <Section className='mt-0' title={<Heading size='h2'>Stacks</Heading>}>
           <Column padding='none'>
             {(Object.keys(data.stacks) as Array<keyof typeof data.stacks>).map((key, index) => (
               <Section subsection key={index} title={key}>
@@ -109,9 +109,11 @@ const Page: React.FC = (): React.ReactNode => {
           </Column>
         </Section>
 
-        <NowPlaying />
+        <Section className='mt-0' title={<Heading size='h2'>Now playing</Heading>}>
+          <NowPlaying />
 
-        <NowPlaying api='my-love' />
+          <NowPlaying api='my-love' />
+        </Section>
       </Column>
     </Container>
   )

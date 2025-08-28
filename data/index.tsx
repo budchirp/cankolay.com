@@ -37,7 +37,7 @@ const data = {
   description: 'Hello, World!',
   email,
   githubUsername: 'budchirp',
-  projectSources: ['budchirp', 'OxygeNvim', 'KapacitorSync'],
+  projectSources: ['budchirp', 'OxygeNvim'],
   keywords: [
     'budchirp',
     'who is budchirp',
@@ -227,18 +227,6 @@ const data = {
     Telegram: {
       link: 'https://t.me/budchirp',
       icon: <SiTelegram />
-    },
-    Discord: {
-      link: 'https://discordapp.com/users/1118636505737478205',
-      icon: <SiDiscord />
-    },
-    Instagram: {
-      link: 'https://instagram.com/budchirp',
-      icon: <SiInstagram />
-    },
-    X: {
-      link: 'https://x.com/budchirp',
-      icon: '𝕏'
     }
   }
 }
